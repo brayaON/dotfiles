@@ -5,3 +5,14 @@ set expandtab
 set smartindent
 filetype indent on
 set number
+set relativenumber
+
+" Colors
+colorscheme github
+
+" Templates for Competitive Programming
+:autocmd BufNewFile *.cpp 0r ~/.vim/templates/tmp.cpp
+
+" Plugins
+call plug#begin('~/.vim/plugged')
+call plug#end()
