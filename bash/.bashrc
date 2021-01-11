@@ -5,9 +5,7 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-if [[ -x "$(command -v vimx)" ]]; then 
-    alias vim="vimx"; 
-fi
+alias vim="vimx"; 
 
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]

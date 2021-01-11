@@ -1,4 +1,5 @@
 set tabstop=4
+let mapleader=","
 set softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -7,12 +8,22 @@ filetype indent on
 set number
 set relativenumber
 
-" Colors
-colorscheme github
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
 " Templates for Competitive Programming
-:autocmd BufNewFile *.cpp 0r ~/.vim/templates/tmp.cpp
+autocmd BufNewFile *.cpp 0r ~/.vim/templates/tmp.cpp
 
 " Plugins
-call plug#begin('~/.vim/plugged')
+call plug#begin('.vim/plugged')
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'preservim/nerdtree'
 call plug#end()
+
+" Colors
+set termguicolors
+set bg=dark
+colorscheme gruvbox
