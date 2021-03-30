@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Create a dir and enter it
+mkd() {
+    mkdir -p "$@"
+    cd "$@" || exit
+}
+

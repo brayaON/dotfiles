@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Helpers
+alias open=xdg-open;
+alias q=exit;
+alias vim="vimx"; 
+
+# Quick way to display contents inside a dir
+alias la="ls -a --color";
+alias lla="ls -al --color";
+alias lsd="ls -lhF --color | grep --color=never '^d'"
+
+# Navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias des="cd ~/Descargas"
+
+# Misc
+alias grep="grep --color=auto "
+alias week="date +%V" 
+alias cwd='pwd | tr -d "\r\n" | xclip -selection clipboard'
+alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip='ifconfig | grep -Eo "inet (addr:)?([0-9]*\\.){3}[0-9]*" | grep -Eo "([0-9]*\\.){3}[0-9]*" | grep -v "172*" | grep -v "127.0.0.1"'
+alias untar="tar xvf"
+alias hosts="sudo vim /etc/hosts"
