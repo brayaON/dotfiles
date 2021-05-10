@@ -1,5 +1,5 @@
 set tabstop=4
-let mapleader=","
+let mapleader=" "
 set softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -17,10 +17,11 @@ nnoremap <C-f> :NERDTreeFind<CR>
 autocmd BufNewFile *.cpp 0r ~/.vim/templates/tmp.cpp
 
 " Plugins
-call plug#begin('.vim/plugged')
+call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
+Plug 'udalov/kotlin-vim'
 call plug#end()
 
 " Colors
