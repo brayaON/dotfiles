@@ -5,3 +5,5 @@
 # Por favor, adapta y descomenta las siguientes líneas:
 #	name = Brayan Ortiz Fajardo
 #	email = brayaON@localhost.localdomain
+[init]
+	defaultBranch = main
