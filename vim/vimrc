@@ -1,5 +1,5 @@
 set tabstop=4
-let mapleader=" "
+let mapleader = ","
 set softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -13,7 +13,24 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
-" Templates for Competitive Programming
+" Move between buffers
+nnoremap <silent> <C-x> :bnext<CR>
+nnoremap <silent> <C-z> :bprev<CR>
+
+" Better tab switching
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Copy the whole file
+nnoremap <C-c> :%y+<CR>
+
+" Quick save & exit
+nmap <leader>w :w!<CR>
+nmap <leader>q :q<CR>
+
+" Template for Competitive Programming
 autocmd BufNewFile *.cpp 0r ~/.vim/templates/tmp.cpp
 
 " Plugins
@@ -21,7 +38,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
-Plug 'udalov/kotlin-vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 " Colors
