@@ -5,11 +5,8 @@ then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 
-PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"
-# MANPATH="/usr/local/texlive/2021/texmf-dist/doc/man:$MANPATH"
-
-export PATH
-export MANPATH
+export PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH:/usr/local/go/bin"
+export GOPATH="$HOME/go/"
 export HISTSIZE=100000
 export HISTFILESIZE=$HISTSIZE
 # colored GCC warnings and errors
