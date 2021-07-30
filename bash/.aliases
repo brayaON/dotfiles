@@ -17,6 +17,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias des="cd ~/Descargas"
 alias cpt="cd ~/Documentos/cp-training/"
+alias bcpp="open ~/Documentos/Libros/Algoritmos/cpp.pdf"
 
 # Misc
 alias grep="grep --color=auto "
