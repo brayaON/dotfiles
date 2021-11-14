@@ -6,3 +6,9 @@ mkd() {
     cd "$@" || exit
 }
 
+# Takes a c++ file, compiles and executes it.
+run() {
+    bin="${1%.*}"
+    g++ "$1" -o "$bin" -std=c++14 -Wall -Wextra -Wpedantic
+    ./"$bin"
+}
