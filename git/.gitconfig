@@ -7,3 +7,11 @@
 #	email = brayaON@localhost.localdomain
 [init]
 	defaultBranch = main
+[alias]
+	st = status
+	co = checkout
+	lg = log
+	br = branch
+	ci = commit
+    pl = pull
+    ps = push

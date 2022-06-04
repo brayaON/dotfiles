@@ -12,3 +12,8 @@ run() {
     g++ "$1" -o "$bin" -std=c++14 -Wall -Wextra -Wpedantic
     ./"$bin"
 }
+
+# Find and remove all files which match with $1 in $2
+delall() {
+    find "$2" -iname "$1" -exec rm -rf {} \; 2> /dev/null
+}
