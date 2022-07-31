@@ -141,10 +141,8 @@ mode "resize" {
 # active resize mode
 bindsym $mod+r mode "resize"
 
-# bar status
-bar {
-    status_command  i3status --config $HOME/.config/i3/status.conf
-}
+# launch polybar status
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # set background
 exec --no-startup-id feh --bg-fill "$HOME/Imágenes/wallpapers/gruv-temple.png"
