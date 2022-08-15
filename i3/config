@@ -1,6 +1,6 @@
 
-# windows key
-set $mod Mod4
+# alt key
+set $mod Mod1
 
 # font pango:SourceCodePro 9
 font pango:JetBrainsMono 9
@@ -35,7 +35,7 @@ bindsym $mod+Return exec gnome-terminal
 bindsym $mod+q kill
 
 # start rofi (a program launcher)
-bindsym --release $mod+d exec --no-startup-id rofi -show drun
+bindsym --release $mod+f exec --no-startup-id rofi -show drun
 
 # change focus
 bindsym $mod+h focus left
@@ -53,7 +53,7 @@ bindsym $mod+Shift+l move right
 bindsym $mod+v split toggle
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+p fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout toggle splitv splith tabbed
@@ -67,8 +67,10 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# tuake a screnshoot
-bindsym --release $mod+x exec --no-startup-id import ~/Imágenes/"Scr-$(echo $RANDOM).png"
+# take a screnshoot
+
+# bindsym Print exec --no-startup-id maim -d 3 "/home/$USER/Imágenes/Scr-$(echo $RANDOM)"
+bindsym --release Print exec gnome-screenshot -i
 
 # workspace names
 set $ws1 "1"
@@ -140,7 +142,7 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # set background
-exec --no-startup-id feh --bg-fill "$HOME/Imágenes/wallpapers/gruv-temple.png"
+exec --no-startup-id feh --bg-fill "$HOME/Imágenes/walls/nord-3.png"
 
 # default values
 default_border pixel
@@ -149,6 +151,6 @@ focus_follows_mouse no
 
 # colors
 # class                 border  backgr. text    indicator child_border
-client.focused          #313131 #504945 #f9f5d7 #11324D   #665c54
-client.unfocused        #333333 #3c3836 #888888 #292d2e   #665c54
+client.focused          #313131 #3c3836 #d79921 #11324D   #665c54
+client.unfocused        #333333 #282828 #888888 #292d2e   #665c54
 client.urgent           #2f343a #d65d0e #ffffff #900000   #900000
