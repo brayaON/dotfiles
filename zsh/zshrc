@@ -27,8 +27,6 @@ export TEMP="$TMP"
 export TMPDIR="$TMP"
 export TMPPREFIX="${TMPDIR}/zsh"
 
-if [ ! -d "${TMP}" ]; then mkdir "${TMP}"; fi
-
 # Use hostname in TMUX_TMPDIR as $HOME may be on nfs.
 export TMUX_TMPDIR="${TMPDIR}/tmux-${HOST}-${UID}"
 if [ ! -d "${TMUX_TMPDIR}" ]; then mkdir -p "${TMUX_TMPDIR}"; fi
