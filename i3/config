@@ -29,13 +29,11 @@ gaps inner 3
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+q kill
 
-# start rofi (a program launcher)
-bindsym --release $mod+f exec --no-startup-id rofi -show drun
 
 # change focus
 bindsym $mod+h focus left
@@ -141,8 +139,11 @@ bindsym $mod+r mode "resize"
 # launch polybar status
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# start rofi (a program launcher)
+bindsym --release $mod+f exec --no-startup-id $HOME/.config/rofi/launcher.sh
+
 # set background
-exec --no-startup-id feh --bg-fill "$HOME/Imágenes/walls/nord-3.png"
+exec --no-startup-id feh --bg-fill "$HOME/Pictures/wlpp3.png"
 
 # default values
 default_border pixel
@@ -151,6 +152,6 @@ focus_follows_mouse no
 
 # colors
 # class                 border  backgr. text    indicator child_border
-client.focused          #313131 #3c3836 #d79921 #11324D   #665c54
-client.unfocused        #333333 #282828 #888888 #292d2e   #665c54
+client.focused          #313131 #002b36 #d79921 #11324D   #665c54
+client.unfocused        #073642 #282828 #888888 #292d2e   #665c54
 client.urgent           #2f343a #d65d0e #ffffff #900000   #900000
