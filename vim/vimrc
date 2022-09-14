@@ -2,11 +2,14 @@ set tabstop=4
 let mapleader = ","
 set softtabstop=4
 set shiftwidth=4
+set foldmethod=indent
+set foldlevel=99
 set expandtab
 set smartindent
 filetype indent on
 set number
 set relativenumber
+syntax on
 
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -35,17 +38,22 @@ autocmd BufNewFile *.cpp 0r ~/.vim/templates/tmp.cpp
 
 " Plugins
 call plug#begin('~/.vim/plugged')
-Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
-Plug 'preservim/nerdtree'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'vimwiki/vimwiki'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'dense-analysis/ale'
+Plug 'altercation/vim-colors-solarized'
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
+" Toggle between dark and light mode
+call togglebg#map("<F5>")
+
 " Colors
-set termguicolors
-set bg=light
-colorscheme gruvbox
+set background=dark
 
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48:2;%lu;%lu;%lum"
+
+" vim-airline settings
+let g:airline_solarized_bg='dark'
+let g:airline_theme='angr'
