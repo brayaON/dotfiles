@@ -433,6 +433,7 @@ alias egrep='egrep --colour=auto'
 alias ls='ls --color=auto --human-readable --group-directories-first --classify'
 alias ll='ls --color=auto --human-readable --group-directories-first --classify -l'
 alias lla='ls --color=auto --human-readable --group-directories-first --classify -la'
+alias py='python'
 
 if command -v colordiff > /dev/null 2>&1; then
     alias diff="colordiff -Nuar"
