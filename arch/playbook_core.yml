@@ -1,0 +1,311 @@
+---
+- name: playbook_core.yml - archlinux base setup
+  hosts: all
+  become: yes
+
+  tasks:
+
+# ARCH FULL UPDATE  ----------------------------------------------------------
+
+    - name: update arch
+      pacman:
+        update_cache: yes
+        upgrade: yes
+
+# INSTALL VARIOUS PACKAGES  --------------------------------------------------
+
+    - name: install bunch of packages
+      pacman:
+        update_cache: yes
+        name:
+          - micro
+          - git
+          - curl
+          - wget
+          - rsync
+          - nnn
+          - bat
+          - tree
+          - unarchiver
+          - duf
+          - ncdu
+          - htop
+          - iotop
+          - glances
+          - nmap
+          - gnu-netcat
+          - iproute2
+          - bind
+          - nload
+          - sysfsutils
+          - borg
+          - fuse
+          - python-llfuse
+          - python-pip
+          - python-setuptools
+          - python-pexpect
+          - polybar
+          - rofi
+          - alacritty
+          - firefox
+          - wireshark-qt
+          - ttf-jetbrains-mono
+          - archlinux-wallpaper
+          - base-devel
+
+# YAY TO ACCESS AUR REPOSITORY  ----------------------------------------------
+
+    - name: disable need for password for pacman to allow yay install
+      lineinfile:
+        path: /etc/sudoers.d/temp_allow_no_pswd_pacman
+        state: present
+        line: "ALL ALL=NOPASSWD: /usr/bin/pacman"
+        validate: /usr/sbin/visudo -cf %s
+        create: yes
+
+    - name: git clone yay-bin repo in to /tmp
+      become: no
+      git:
+        repo: 'https://aur.archlinux.org/yay-bin.git'
+        dest: /tmp/yay-bin
+        clone: yes
+
+    - name: install yay using makepkg
+      become: no
+      expect:
+        chdir: /tmp/yay-bin
+        command: makepkg -si
+        responses:
+          (?i)Proceed with installation: "y"
+
+    - name: re-enable need for password for pacman
+      file:
+        path: /etc/sudoers.d/temp_allow_no_pswd_pacman
+        state: absent
+
+# SYSTEM SETTINGS CHANGES ----------------------------------------------------
+
+    - name: pacman - enable color
+      lineinfile:
+        path: /etc/pacman.conf
+        regexp: '^#Color$'
+        line: 'Color'
+
+    - name: pacman - enable ParallelDownloads = 5
+      lineinfile:
+        path: /etc/pacman.conf
+        regexp: '#ParallelDownloads = 5'
+        line: 'ParallelDownloads = 5'
+
+    - name: makepkg - disable compression
+      lineinfile:
+        path: /etc/makepkg.conf
+        regexp: "PKGEXT='.pkg.tar.zst'"
+        line: "PKGEXT='.pkg.tar'"
+
+    - name: makepkg - enable parallel compilation MAKEFLAGS="-j$(nproc)"
+      lineinfile:
+        path: /etc/makepkg.conf
+        regexp: '#MAKEFLAGS="-j2"'
+        line: 'MAKEFLAGS="-j$(nproc)"'
+
+    - name: fstab change relatime to noatime
+      replace:
+        path: /etc/fstab
+        regexp: 'relatime'
+        replace: 'noatime'
+
+    - name: change number of failed logins that triger 10min lockout
+      lineinfile:
+        path: /etc/security/faillock.conf
+        regexp: '^# deny = 3$'
+        line: 'deny = 10'
+
+    - name: enable members of wheel group to sudo
+      lineinfile:
+        path: /etc/sudoers.d/01_wheel_allow_sudo
+        state: present
+        line: "%wheel ALL=(ALL:ALL) NOPASSWD: ALL"
+        validate: /usr/sbin/visudo -cf %s
+        create: yes
+
+    - name: disable need for sudo password for nnn
+      lineinfile:
+        path: /etc/sudoers.d/02_no_pswd_nnn
+        state: present
+        line: "ALL ALL=NOPASSWD:SETENV: /usr/bin/nnn"
+        validate: /usr/sbin/visudo -cf %s
+        create: yes
+
+# SSH ------------------------------------------------------------------------
+
+    - name: install ssh
+      pacman:
+        name:
+          - openssh
+
+    - name: enable and start ssh service
+      systemd:
+        name: sshd
+        enabled: no
+        state: started
+
+# LOCATE THE QUICK FILE SEARCH  ----------------------------------------------
+
+    - name: install plocate
+      pacman:
+        name:
+          - plocate
+
+    - name: enable and start ~12h updatedb timer
+      systemd:
+        name: plocate-updatedb.timer
+        enabled: yes
+        state: started
+
+# CRONIE  --------------------------------------------------------------------
+
+    - name: install cronie
+      pacman:
+        name:
+          - cronie
+
+    - name: enable and start cronie.service
+      systemd:
+        name: cronie
+        enabled: yes
+        state: started
+
+# SSD TRIM SCHEDULED  --------------------------------------------------------
+
+    - name: install util-linux
+      pacman:
+        name:
+          - util-linux
+
+    - name: enable and start weekly ssd disks trim using fstrim timer
+      systemd:
+        name: fstrim.timer
+        enabled: yes
+        state: started
+
+# TRASH SETUP ----------------------------------------------------------------
+
+    - name: install trash-cli
+      pacman:
+        name:
+          - trash-cli
+
+    - name: create trash-empty.service file
+      copy:
+        dest: '/etc/systemd/system/trash-empty.service'
+        content: |
+          [Unit]
+          Description=Empty trash older than 30 days
+
+          [Service]
+          Type=oneshot
+          ExecStart=/usr/bin/trash-empty 30
+
+    - name: create trash-empty.timer file
+      copy:
+        dest: '/etc/systemd/system/trash-empty.timer'
+        content: |
+          [Unit]
+          Description=Empty trash older than 30 days daily
+
+          [Timer]
+          OnCalendar=daily
+          Persistent=true
+
+          [Install]
+          WantedBy=timers.target
+
+    - name: enable and start trash-empty.timer
+      systemd:
+        name: trash-empty.timer
+        enabled: yes
+        state: started
+
+# CACHE CLEANER SCHEDULED  ---------------------------------------------------
+
+    - name: install pacman-contrib
+      pacman:
+        name:
+          - pacman-contrib
+
+    - name: enable and start weekly cache cleanup paccache timer
+      systemd:
+        name: paccache.timer
+        enabled: yes
+        state: started
+
+# REFLECTOR TO REGULARLY UPDATE MIRRORLIST  ---- CHANGE COUNTRY CODES !!! ----
+
+    - name: install reflector
+      pacman:
+        name:
+          - reflector
+
+    - name: write reflector configuration file
+      copy:
+        dest: '/etc/xdg/reflector/reflector.conf'
+        content: |
+          --save /etc/pacman.d/mirrorlist
+          --protocol http
+          --country CO
+          --score 20
+          --sort rate
+
+    - name: enable and start reflector timer
+      systemd:
+        name: reflector.timer
+        enabled: yes
+        state: started
+
+        #    - name: do initial run of reflector.service
+        #      systemd:
+        #        name: reflector
+        #        enabled: yes
+        #        state: started
+
+# NEOFETCH  ------------------------------------------------------------------
+
+    - name: install neofetch
+      pacman:
+        name:
+          - neofetch
+
+    - name: run neofetch to generate config
+      become: no
+      command: neofetch
+
+    - name: enable disk info in neofetch
+      become: no
+      lineinfile:
+        path: ~/.config/neofetch/config.conf
+        regexp: '.*# info "Disk" disk$'
+        line: '    info "Disk" disk'
+
+    - name: enable local IP info in neofetch
+      become: no
+      lineinfile:
+        path: ~/.config/neofetch/config.conf
+        regexp: '.*# info "Local IP" local_ip$'
+        line: '    info "Local IP" local_ip'
+
+# SETUP MICRO TEXT EDITOR  ---------------------------------------------------
+
+    - name: install micro text editor
+      pacman:
+        name:
+          - micro
+
+            #    - name: copy config directory with prefernces, hotkeys, syntax highlight
+            #      become: no
+            #      copy:
+            #        src: .config/micro
+            #        dest: ~/.config
+            #        mode: 0644
+
+#  ---------------------------------------------------------------------------

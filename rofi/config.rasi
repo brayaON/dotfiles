@@ -1,6 +1,0 @@
-configuration {
-    	modi: "window,run,ssh,filebrowser";
-	cycle: true;
-	show-icons: true;
-}
-@theme "solarized_alternate"
