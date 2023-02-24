@@ -24,6 +24,9 @@ colors:
       foreground: '#000000'
       background: '#ffff00'
 
+font:
+  size: 10.0
+
 cursor:
   style:
     shape: Underline
@@ -34,3 +37,4 @@ key_bindings:
   - { key: L, mods: Control|Shift, action: ClearSelection }
   - { key: Up, mods: Shift, action: ScrollPageUp }
   - { key: Down, mods: Shift, action: ScrollPageDown }
+  - { key: Return, mods: Alt, action: ToggleFullScreen }
