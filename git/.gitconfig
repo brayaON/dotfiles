@@ -1,17 +1,17 @@
-# Este es el archivo de configuración de Git por usuario.
+# Git configuration - B.O.F
+# @brayaon20
+
 [user]
-	name = brayaON
-	email = bortizf@unal.edu.co
-# Por favor, adapta y descomenta las siguientes líneas:
-#	name = Brayan Ortiz Fajardo
-#	email = brayaON@localhost.localdomain
+    name = brayaON
+    email = bortizf@unal.edu.co
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [alias]
-	st = status
-	co = checkout
-	lg = log
-	br = branch
-	ci = commit
+    st = status
+    co = checkout
+    lg = log
+    br = branch
+    ci = commit
     pl = pull
     ps = push
+    a = add
