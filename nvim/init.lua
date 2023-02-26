@@ -1,15 +1,12 @@
 -- Neovim configuration - B.O.F
 -- @brayaon20
 
--- Imports
-require("plugins")
-
 -- Common options
 vim.g.mapleader = [[ ]]
 
 local opt = vim.opt
 opt.autoindent = true
-opt.background = "dark"
+opt.background = "light"
 opt.clipboard:append("unnamedplus")
 opt.number = true
 opt.relativenumber = true
@@ -41,3 +38,54 @@ api.nvim_create_autocmd("BufNewFile", {
     pattern = "*.lua",
     command = [[0read !printf "-- Description - B.O.F\n-- @brayaon20"]]
 })
+
+-- Plugin setups
+require("plugins")
+
+-- Indent Blankline
+vim.cmd [[highlight IndentBlanklineIndent1 guifg=#1F1F1F gui=nocombine]]
+require("indent_blankline").setup {
+    char_highlight_list = {
+        "IndentBlanklineIndent1",
+    },
+}
+
+-- Telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
+-- Treesitter
+local treesitter = require('nvim-treesitter.configs')
+treesitter.setup {
+    ensure_installed = { "cpp", "lua", "python", "vim", "yaml", "go" },
+    highlight = {
+	enable = true
+    }
+}
+
+-- lsp-config
+local lsp = require('lsp-zero').preset({
+  name = 'minimal',
+  set_lsp_keymaps = true,
+  manage_nvim_cmp = true,
+  suggest_lsp_servers = false,
+})
+
+lsp.ensure_installed({
+    "clangd",
+    "lua_ls"
+})
+
+lsp.setup()
+
+-- Colorscheme
+require('solarized').set()
+
+
+-- Lualine
+require('lualine').setup {
+    theme = 'solarized'
+}
