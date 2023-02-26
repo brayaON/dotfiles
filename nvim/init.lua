@@ -6,7 +6,7 @@ vim.g.mapleader = [[ ]]
 
 local opt = vim.opt
 opt.autoindent = true
-opt.background = "light"
+opt.background = "dark"
 opt.clipboard:append("unnamedplus")
 opt.number = true
 opt.relativenumber = true
@@ -82,10 +82,8 @@ lsp.ensure_installed({
 lsp.setup()
 
 -- Colorscheme
-require('solarized').set()
-
+vim.g.material_style = "darker"
+vim.cmd [[ colorscheme material ]]
 
 -- Lualine
-require('lualine').setup {
-    theme = 'solarized'
-}
+require("lualine").setup()

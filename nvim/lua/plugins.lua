@@ -55,6 +55,7 @@ return require("packer").startup(function(use)
 
   -- Colorschemes
   use 'shaunsingh/solarized.nvim'
+  use 'marko-cerovac/material.nvim'
 
   -- Lualine
   use {
