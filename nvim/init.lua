@@ -27,6 +27,10 @@ keymap.set('n', '<leader>j', '<c-w>j')
 keymap.set('n', '<leader>k', '<c-w>k')
 keymap.set('n', '<leader>l', '<c-w>l')
 
+keymap.set('n', '<leader>1', '1<c-6>')
+keymap.set('n', '<leader>2', '2<c-6>')
+keymap.set('n', '<leader>3', '3<c-6>')
+
 -- Autocommands
 local api = vim.api
 api.nvim_create_autocmd("BufNewFile", {
@@ -87,3 +91,6 @@ vim.cmd [[ colorscheme material ]]
 
 -- Lualine
 require("lualine").setup()
+
+-- Bufferline
+require("bufferline").setup()
