@@ -27,9 +27,11 @@ keymap.set('n', '<leader>j', '<c-w>j')
 keymap.set('n', '<leader>k', '<c-w>k')
 keymap.set('n', '<leader>l', '<c-w>l')
 
-keymap.set('n', '<leader>1', '1<c-6>')
-keymap.set('n', '<leader>2', '2<c-6>')
-keymap.set('n', '<leader>3', '3<c-6>')
+keymap.set('n', '<leader>1', '<cmd>b1<cr>')
+keymap.set('n', '<leader>2', '<cmd>b2<cr>')
+keymap.set('n', '<leader>3', '<cmd>b3<cr>')
+keymap.set('n', '<leader>4', '<cmd>b4<cr>')
+keymap.set('n', '<leader>e','<cmd>bd<cr>')
 
 -- Autocommands
 local api = vim.api
