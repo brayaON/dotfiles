@@ -23,9 +23,14 @@ template<typename A> ostream& operator<<(ostream &os, const vector<A> &v) {
     return os;
 }
 
+void f() {
+}
+
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
+
+    f();
 
     return 0;
 }
