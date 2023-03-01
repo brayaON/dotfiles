@@ -66,7 +66,7 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 -- Treesitter
 local treesitter = require('nvim-treesitter.configs')
 treesitter.setup {
-    ensure_installed = { "cpp", "lua", "python", "vim", "yaml", "go" },
+    ensure_installed = { "cpp", "lua", "python", "vim", "yaml", "go", "terraform" },
     highlight = {
 	enable = true
     }
