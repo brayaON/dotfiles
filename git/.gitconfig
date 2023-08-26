@@ -3,7 +3,7 @@
 
 [user]
     name = brayaON
-    email = bortizf@unal.edu.co
+    email = bof.23402@gmail.com
 [init]
     defaultBranch = main
 [alias]
@@ -15,3 +15,6 @@
     pl = pull
     ps = push
     a = add
+    psf = push -f
+    aamend = --all --amend --no-edit
+    amend = --amend --no-edit
