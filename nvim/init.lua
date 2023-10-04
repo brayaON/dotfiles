@@ -46,11 +46,7 @@ require("plugins")
 
 -- Indent Blankline
 vim.cmd [[highlight IndentBlanklineIndent1 guifg=#1F1F1F gui=nocombine]]
-require("indent_blankline").setup {
-    char_highlight_list = {
-        "IndentBlanklineIndent1",
-    },
-}
+require("ibl").setup()
 
 -- Telescope
 local builtin = require('telescope.builtin')
@@ -62,7 +58,7 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 -- Treesitter
 local treesitter = require('nvim-treesitter.configs')
 treesitter.setup {
-    ensure_installed = { "cpp", "lua", "python", "vim", "yaml", "go", "terraform" },
+    ensure_installed = { "cpp", "lua", "python", "vim", "yaml", "go", "terraform", "bash" },
     highlight = {
 	enable = true
     }
@@ -84,8 +80,8 @@ lsp.ensure_installed({
 lsp.setup()
 
 -- Colorscheme
-vim.g.material_style = "darker"
-vim.cmd [[ colorscheme material ]]
+-- vim.g.material_style = "darker"
+vim.cmd [[ colorscheme tender ]]
 
 -- Lualine
 require("lualine").setup()

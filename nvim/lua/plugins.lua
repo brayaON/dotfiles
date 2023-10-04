@@ -16,7 +16,7 @@ return require("packer").startup(function(use)
 
   -- FuzzyFinder
   use {
-    "nvim-telescope/telescope.nvim", 
+    "nvim-telescope/telescope.nvim",
     requires = { {"nvim-lua/plenary.nvim"} }
   }
 
@@ -56,6 +56,7 @@ return require("packer").startup(function(use)
   -- Colorschemes
   use 'shaunsingh/solarized.nvim'
   use 'marko-cerovac/material.nvim'
+  use 'jacoborus/tender.vim'
 
   -- Lualine
   use {
