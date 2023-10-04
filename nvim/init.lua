@@ -12,6 +12,7 @@ opt.number = true
 opt.relativenumber = true
 opt.shiftwidth = 4
 opt.smartindent = true
+opt.termguicolors = true
 
 -- Common mappings
 local keymap = vim.keymap
@@ -81,7 +82,8 @@ lsp.setup()
 
 -- Colorscheme
 -- vim.g.material_style = "darker"
-vim.cmd [[ colorscheme tender ]]
+vim.g.everforest_background = 'medium'
+vim.cmd [[ colorscheme everforest ]]
 
 -- Lualine
 require("lualine").setup()
