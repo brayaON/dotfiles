@@ -35,10 +35,6 @@ keymap.set('n', '<leader>e','<cmd>bd<cr>')
 
 -- Autocommands
 local api = vim.api
-api.nvim_create_autocmd("BufNewFile", {
-    pattern = "*.cpp",
-    command = "0read $HOME/dotfiles/nvim/templates/cp.cpp"
-})
 
 api.nvim_create_autocmd("BufNewFile", {
     pattern = "*.lua",
