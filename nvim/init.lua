@@ -42,6 +42,16 @@ api.nvim_create_autocmd("BufNewFile", {
     command = [[0read !printf "-- Description - B.O.F\n-- @brayaon20"]]
 })
 
+-- api.nvim_create_autocmd("VimEnter", {
+--     pattern = "*",
+--     command = [[silent !tmux set status off]]
+-- })
+--
+-- api.nvim_create_autocmd("VimLeave", {
+--     pattern = "*",
+--     command = [[silent !tmux set status on]]
+-- })
+
 -- Plugin setups
 require("plugins")
 
@@ -90,3 +100,6 @@ require("lualine").setup()
 
 -- Bufferline
 require("bufferline").setup()
+
+-- Commenter
+require("Comment").setup()

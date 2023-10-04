@@ -69,4 +69,6 @@ return require("packer").startup(function(use)
   -- Buffer line
   use { 'akinsho/bufferline.nvim', tag = 'v3.*', requires = 'nvim-tree/nvim-web-devicons' }
 
+  -- Comenter
+  use 'numToStr/Comment.nvim'
 end)
