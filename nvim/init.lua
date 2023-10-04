@@ -32,7 +32,7 @@ keymap.set('n', '<leader>1', '<cmd>b1<cr>')
 keymap.set('n', '<leader>2', '<cmd>b2<cr>')
 keymap.set('n', '<leader>3', '<cmd>b3<cr>')
 keymap.set('n', '<leader>4', '<cmd>b4<cr>')
-keymap.set('n', '<leader>e','<cmd>bd<cr>')
+keymap.set('n', '<leader>d','<cmd>bd<cr>')
 
 -- Autocommands
 local api = vim.api
