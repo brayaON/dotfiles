@@ -15,6 +15,21 @@ hints:
         key: U
         mods: Control|Shift
 
+font:
+  size: 10.0
+
+cursor:
+  style:
+    shape: Underline
+    blinking: On
+
+key_bindings:
+  - { key: Return, mods: Control|Shift, action: CreateNewWindow }
+  - { key: L, mods: Control|Shift, action: ClearSelection }
+  - { key: Up, mods: Shift, action: ScrollPageUp }
+  - { key: Down, mods: Shift, action: ScrollPageDown }
+  - { key: Return, mods: Alt, action: ToggleFullScreen }
+
 # Define
 schemes:
   everforest_dark_hard: &everforest_dark_hard
@@ -152,18 +167,3 @@ schemes:
 
 # Apply
 colors: *everforest_dark_medium
-
-font:
-  size: 10.0
-
-cursor:
-  style:
-    shape: Underline
-    blinking: On
-
-key_bindings:
-  - { key: Return, mods: Control|Shift, action: CreateNewWindow }
-  - { key: L, mods: Control|Shift, action: ClearSelection }
-  - { key: Up, mods: Shift, action: ScrollPageUp }
-  - { key: Down, mods: Shift, action: ScrollPageDown }
-  - { key: Return, mods: Alt, action: ToggleFullScreen }
