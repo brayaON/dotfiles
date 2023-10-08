@@ -16,7 +16,11 @@ hints:
         mods: Control|Shift
 
 font:
-  size: 10.0
+  normal:
+    family: 'JetBrains Mono SemiBold'
+    style: Regular
+
+  size: 9
 
 cursor:
   style:
