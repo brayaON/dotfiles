@@ -16,25 +16,32 @@ opt.termguicolors = true
 
 -- Common mappings
 local keymap = vim.keymap
-keymap.set('n', '+c', 'i"<Esc>ea"<Esc>')
-keymap.set('n', '+l', 'i{<Esc>ea}<Esc>')
-keymap.set('n', '+p', 'i(<Esc>ea)<Esc>')
 
+-- Enclosing
+keymap.set('n', '+c', 'i"<Esc>ea"<Esc>') -- ""
+keymap.set('n', '+l', 'i{<Esc>ea}<Esc>') -- {}
+keymap.set('n', '+p', 'i(<Esc>ea)<Esc>') -- ()
+
+-- Saving & quitting
 keymap.set('n', '<leader>q', '<cmd>q<cr>')
 keymap.set('n', '<leader>w', '<cmd>w<cr>')
 
+-- Tab movement
 keymap.set('n', '<leader>h', '<c-w>h')
 keymap.set('n', '<leader>j', '<c-w>j')
 keymap.set('n', '<leader>k', '<c-w>k')
 keymap.set('n', '<leader>l', '<c-w>l')
 
+-- Buffer
 keymap.set('n', '<leader>1', '<cmd>b1<cr>')
 keymap.set('n', '<leader>2', '<cmd>b2<cr>')
 keymap.set('n', '<leader>3', '<cmd>b3<cr>')
 keymap.set('n', '<leader>4', '<cmd>b4<cr>')
 keymap.set('n', '<leader>d','<cmd>bd<cr>')
 
+-- Misc
 keymap.set('n', '<leader>ñ','<cmd>noh<cr>')
+keymap.set('n', '<leader>g','<c-w>r')
 
 -- Autocommands
 local api = vim.api
