@@ -34,6 +34,8 @@ keymap.set('n', '<leader>3', '<cmd>b3<cr>')
 keymap.set('n', '<leader>4', '<cmd>b4<cr>')
 keymap.set('n', '<leader>d','<cmd>bd<cr>')
 
+keymap.set('n', '<leader>ñ','<cmd>noh<cr>')
+
 -- Autocommands
 local api = vim.api
 
@@ -92,7 +94,7 @@ lsp.setup()
 
 -- Colorscheme
 -- vim.g.material_style = "darker"
-vim.g.everforest_background = 'medium'
+-- vim.g.everforest_background = 'med'
 vim.cmd [[ colorscheme everforest ]]
 
 -- Lualine
