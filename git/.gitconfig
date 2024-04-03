@@ -15,6 +15,6 @@
     pl = pull
     ps = push
     a = add
-    psf = push -f
+    psf = push --force-with-lease
     aamend = --all --amend --no-edit
     amend = --amend --no-edit
