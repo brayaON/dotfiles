@@ -1,9 +1,9 @@
 -- Autocommands - B.O.F
 -- @brayaon20
 
-vim.api.nvim_create_autocmd("BufNewFile", {
-    pattern = "*.lua",
-    command = [[0read !printf "-- Description - B.O.F\n-- @brayaon20"]]
+vim.api.nvim_create_autocmd('BufNewFile', {
+  pattern = '*.lua',
+  command = [[0read !printf "-- Description - B.O.F\n-- @brayaon20"]],
 })
 
 -- Highlight when yanking text
