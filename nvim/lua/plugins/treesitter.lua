@@ -19,6 +19,7 @@ return {
             'html',
             'terraform',
             'cpp',
+            'bicep',
           },
           auto_install = true,
           highlight = { enable = true },

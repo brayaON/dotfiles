@@ -7,6 +7,7 @@ vim.opt.background = 'dark'
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = 'a' -- Enable mouse in all modes
+vim.opt.cursorline = true
 
 -- Sync OS and Neovim clipboards
 vim.schedule(function()
@@ -33,5 +34,4 @@ vim.opt.splitbelow = true
 -- Preview substitutions as you type.
 vim.opt.inccommand = 'split'
 
-vim.opt.cursorline = true
 vim.opt.scrolloff = 10

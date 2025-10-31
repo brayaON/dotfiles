@@ -14,3 +14,17 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+-- Lua function
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+  pattern = { '*.c', '*.h' },
+  callback = function()
+    print('Entering a C or C++ file')
+  end,
+})
+
+-- VIM Command
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+  pattern = { '*.c', '*.h' },
+  command = "echo 'Entering a C or C++ file'",
+})

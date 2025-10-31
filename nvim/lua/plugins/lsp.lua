@@ -81,6 +81,10 @@ return {
       local servers = {
         gopls = {},
         terraformls = {},
+        bicep = {
+          -- cmd = { 'dotnet', '/usr/local/bin/bicep-langserver/Bicep.LangServer.dll' },
+          single_file_support = true,
+        },
         lua_ls = {
           settings = {
             Lua = {
@@ -89,6 +93,15 @@ return {
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               diagnostics = { disable = { 'missing-fields' } },
+            },
+          },
+        },
+        yamlls = {
+          settings = {
+            yaml = {
+              schemas = {
+                ['https://json.schemastore.org/github-workflow.json'] = '/.github/workflows/*',
+              },
             },
           },
         },
